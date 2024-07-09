@@ -13,9 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <div className={'flex gap-8'}>
+    <html lang="en" className={'h-full'}>
+      <body className={'h-full'}>
+        <div className={'flex gap-8 h-full'}>
           <SideBar/>
           <section className={'flex-1'}>{children}</section>
         </div>
