@@ -16,13 +16,19 @@ const initialData: NoteData = {
     "1702459188837": '{"title":"ea molestias","content":"et iusto sed quo iure","updateTime":"2023-12-13T09:19:48.837Z"}'
 }
 
+export const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 export async function getAllNotes(): Promise<NoteData> {
-    const data = await redis.hgetall("notes");
-    if (Object.keys(data).length == 0) {
-        await redis.hset("notes", initialData);
+    try {
+        await sleep(5000); // 模拟延迟
+        const data = await redis.hgetall("notes");
+        if (Object.keys(data).length == 0) {
+            await redis.hset("notes", initialData);
+        }
+        return redis.hgetall("notes");
+    } catch (e) {
+        return {}
     }
-    return redis.hgetall("notes");
 }
 
 export async function addNote(data) {
