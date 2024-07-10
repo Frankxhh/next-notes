@@ -20,7 +20,7 @@ export const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 export async function getAllNotes(): Promise<NoteData> {
     try {
-        await sleep(5000); // 模拟延迟
+        await sleep(3000); // 模拟延迟
         const data = await redis.hgetall("notes");
         if (Object.keys(data).length == 0) {
             await redis.hset("notes", initialData);
@@ -41,7 +41,8 @@ export async function updateNote(uuid, data) {
     await redis.hset("notes", [uuid], data);
 }
 
-export async function getNote(uuid) {
+export async function getNote(uuid): Promise<Note> {
+    await sleep(3000); // 模拟延迟
     return JSON.parse(await redis.hget("notes", uuid));
 }
 
