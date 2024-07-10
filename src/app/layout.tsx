@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={'h-full'}>
       <body className={'h-full'}>
-        <div className={'flex gap-8 h-full'}>
+        <div className={'flex h-full'}>
           <SideBar/>
-          <section className={'flex-1'}>{children}</section>
+          <section className={'flex-1 bg-white m-6 rounded p-10'}>{children}</section>
         </div>
       </body>
     </html>
