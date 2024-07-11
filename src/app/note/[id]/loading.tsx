@@ -1,6 +1,6 @@
 export default function Loading() {
-    const contentNum = 6
-    const contentArr = Array(contentNum).fill(0)
+    const contentNum = 6;
+    const contentArr = Array(contentNum).fill(0);
     return (
         <div>
             <div className={'rounded flex justify-between gap-4 h-12'}>
@@ -17,5 +17,5 @@ export default function Loading() {
                 ))}
             </div>
         </div>
-    )
+    );
 }
