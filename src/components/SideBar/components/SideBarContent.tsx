@@ -4,7 +4,8 @@ import {useState} from "react";
 
 export default function SideBarExpand({content}) {
     const [isExpand, setExpand] = useState(false)
-    const handleExpand = () => {
+    const handleExpand = (e) => {
+        e.preventDefault()
         setExpand(!isExpand)
     }
 
