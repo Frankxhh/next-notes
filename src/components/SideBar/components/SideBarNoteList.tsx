@@ -15,7 +15,7 @@ export default async function SideBarNoteList() {
                 const { title, content, updateTime } = JSON.parse(note);
                 return (
                     <Link href={`/note/${noteId}`} key={noteId}>
-                        <div className={'p-4 my-2 bg-gray-200 rounded-md cursor-pointer text-left'}>
+                        <div className={'my-2 cursor-pointer rounded-md bg-gray-200 p-4 text-left'}>
                             <div className={'relative'}>
                                 <div className={'text-xl font-bold'}>{title}</div>
                                 <div>{dayjs(updateTime).format('YYYY-MM-DD hh:mm:ss')}</div>

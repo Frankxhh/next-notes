@@ -15,7 +15,7 @@ export default function SideBarExpand({ content }: Params) {
 
     return (
         <>
-            <div className={'absolute top-0 right-0 text-cyan-500'} onClick={handleExpand}>
+            <div className={'absolute right-0 top-0 text-cyan-500'} onClick={handleExpand}>
                 {isExpand ? '收起' : '展开'}
             </div>
 

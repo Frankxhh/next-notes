@@ -18,19 +18,19 @@ export default function Preview({ noteId, noteDetail }: Params) {
                 <div className={'flex justify-between'}>
                     <span>Last updated on {dayjs(updateTime).format('YYYY-MM-DD hh:mm:ss')}</span>
                     <Link href={`/note/edit/${noteId}`}>
-                        <button className={`px-4 py-2 border-2 border-cyan-600 text-cyan-600 font-bold rounded-2xl`}>
+                        <button className={`rounded-2xl border-2 border-cyan-600 px-4 py-2 font-bold text-cyan-600`}>
                             Edit
                         </button>
                     </Link>
                 </div>
             ) : (
-                <button className={`mt-8 mb-4 px-2 py-1 bg-primary-light text-sm text-cyan-600 font-bold rounded-2xl`}>
+                <button className={`mb-4 mt-8 rounded-2xl bg-primary-light px-2 py-1 text-sm font-bold text-cyan-600`}>
                     PREVIEW
                 </button>
             )}
 
             <h1 className={'text-6xl font-bold'}>{title}</h1>
-            <div className={'h-[1px] bg-[#f5f5f5] my-10'}></div>
+            <div className={'my-10 h-[1px] bg-[#f5f5f5]'}></div>
             <div>{content}</div>
         </div>
     );

@@ -4,7 +4,7 @@ export default function SideBarLoading() {
     return (
         <div>
             {loadingList.map((item, index) => (
-                <div key={index} className={'h-32 p-4 my-2 bg-gray-200 rounded-md cursor-pointer text-left'}></div>
+                <div key={index} className={'my-2 h-32 cursor-pointer rounded-md bg-gray-200 p-4 text-left'}></div>
             ))}
         </div>
     );

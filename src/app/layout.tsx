@@ -17,7 +17,7 @@ export default function RootLayout({
             <body className={'h-full'}>
                 <div className={'flex h-full'}>
                     <SideBar />
-                    <section className={'flex-1 bg-white m-6 rounded p-10'}>{children}</section>
+                    <section className={'m-6 flex-1 rounded bg-white p-10'}>{children}</section>
                 </div>
             </body>
         </html>

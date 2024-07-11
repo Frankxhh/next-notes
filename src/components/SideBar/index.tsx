@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 export default function SideBar() {
     return (
-        <div className={'p-4 bg-white shadow-lg shadow-gray-300 min-w-[300px] '}>
+        <div className={'min-w-[300px] bg-white p-4 shadow-lg shadow-gray-300'}>
             <Link href={'/'}>
-                <h1 className="text-4xl font-bold py-8 text-center cursor-pointer">hela notes</h1>
+                <h1 className="cursor-pointer py-8 text-center text-4xl font-bold">hela notes</h1>
             </Link>
 
             <Button />

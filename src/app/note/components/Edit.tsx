@@ -24,17 +24,17 @@ export default function Edit({ noteId = '', noteDetail }: Params) {
     };
 
     return (
-        <div className={'h-full flex'}>
-            <form className={'h-full w-1/2 mr-4 flex flex-col gap-4'}>
+        <div className={'flex h-full'}>
+            <form className={'mr-4 flex h-full w-1/2 flex-col gap-4'}>
                 <input
-                    className={'border border-[#ccc] p-4 rounded outline-0'}
+                    className={'rounded border border-[#ccc] p-4 outline-0'}
                     value={formData.title}
                     onChange={(e) => handleChange(e, 'title')}
                     type="text"
                     placeholder="Title"
                 />
                 <textarea
-                    className={'flex-1 border border-[#ccc] p-4 rounded resize-none outline-0'}
+                    className={'flex-1 resize-none rounded border border-[#ccc] p-4 outline-0'}
                     onChange={(e) => handleChange(e, 'content')}
                     value={formData.content}
                     placeholder="Content"
@@ -46,13 +46,13 @@ export default function Edit({ noteId = '', noteDetail }: Params) {
                 <div className={'text-right'}>
                     <button
                         onClick={() => saveNote(formData)}
-                        className={'ml-auto mr-4 px-4 py-2 border-2 bg-cyan-600 text-white font-bold rounded-2xl'}
+                        className={'ml-auto mr-4 rounded-2xl border-2 bg-cyan-600 px-4 py-2 font-bold text-white'}
                     >
                         DONE
                     </button>
                     <button
                         onClick={() => deleteNote(formData.id)}
-                        className={'px-4 py-2 border-2 border-error-disabled text-error-disabled font-bold rounded-2xl'}
+                        className={'rounded-2xl border-2 border-error-disabled px-4 py-2 font-bold text-error-disabled'}
                     >
                         DELETE
                     </button>
