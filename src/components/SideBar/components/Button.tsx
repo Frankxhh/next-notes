@@ -1,14 +1,11 @@
 'use client'
-import {useState} from "react";
+import Link from "next/link";
 
-export default function Button(){
-    const [isNew, setIsNew] = useState(true)
-
-    const handleClick = () => {
-
-    }
+export default function Button() {
 
     return (
-        <button onClick={handleClick} className={'bg-cyan-200 px-4 py-2 rounded mb-4'}>{isNew?'new':'edit'}</button>
+        <Link href={'/note/edit'}>
+            <button className={'bg-cyan-200 px-4 py-2 rounded mb-4'}>new</button>
+        </Link>
     )
 }

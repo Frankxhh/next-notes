@@ -2,10 +2,10 @@ import Redis from 'ioredis'
 
 const redis = new Redis()
 
-interface Note {
+export interface Note {
     title: string;
-    content: string;
-    updateTime: string;
+    content?: string;
+    updateTime?: string;
 }
 
 type NoteData = Record<string, string>;
