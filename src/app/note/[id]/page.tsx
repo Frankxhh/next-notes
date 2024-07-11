@@ -7,6 +7,6 @@ export default async function NoteDetail({params}) {
 
     if (!note) return <div>暂无数据</div>
 
-    return <Preview noteDetail={note}/>
+    return <Preview noteId={id} noteDetail={note}/>
 
 }

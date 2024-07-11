@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
+import Link from "next/link";
 
-export default function Preview({noteDetail}) {
+export default function Preview({noteId, noteDetail}) {
     const {title, content, updateTime} = noteDetail
     const color = 'red'
 
@@ -10,9 +11,11 @@ export default function Preview({noteDetail}) {
             {updateTime ?
                 <div className={'flex justify-between'}>
                     <span>Last updated on {dayjs(updateTime).format('YYYY-MM-DD hh:mm:ss')}</span>
-                    <button
-                        className={`px-4 py-2 border-2 border-cyan-600 text-cyan-600 font-bold rounded-2xl`}>Edit
-                    </button>
+                    <Link href={`/note/edit/${noteId}`}>
+                        <button
+                            className={`px-4 py-2 border-2 border-cyan-600 text-cyan-600 font-bold rounded-2xl`}>Edit
+                        </button>
+                    </Link>
                 </div>
                 :
                 <button

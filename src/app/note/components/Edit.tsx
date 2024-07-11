@@ -2,13 +2,15 @@
 import {ChangeEvent, useState} from "react";
 import {Note} from "@/lib/redis";
 import Preview from "@/app/note/components/Preview";
+import {deleteNote, saveNote} from "@/app/actions";
 
 
-export default function Edit() {
+export default function Edit({noteId = '', noteDetail = null}) {
 
-    const [formData, setFormData] = useState<Note>({
-        title: '笔记',
-        content: ''
+    const [formData, setFormData] = useState({
+        title: noteDetail ? noteDetail.title : '笔记',
+        content: noteDetail ? noteDetail.content : '',
+        id:noteId
     })
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>, key: string) => {
@@ -36,9 +38,11 @@ export default function Edit() {
             <div className={'flex-1'}>
                 <div className={'text-right'}>
                     <button
+                        onClick={() => saveNote(formData)}
                         className={'ml-auto mr-4 px-4 py-2 border-2 bg-cyan-600 text-white font-bold rounded-2xl'}>DONE
                     </button>
                     <button
+                        onClick={() => deleteNote(formData.id)}
                         className={'px-4 py-2 border-2 border-error-disabled text-error-disabled font-bold rounded-2xl'}>DELETE
                     </button>
                 </div>
