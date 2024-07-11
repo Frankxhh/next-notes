@@ -2,9 +2,13 @@
 
 import {useState} from "react";
 
-export default function SideBarExpand({content}) {
+interface Params {
+    content:any
+}
+
+export default function SideBarExpand({content}:Params) {
     const [isExpand, setExpand] = useState(false)
-    const handleExpand = (e) => {
+    const handleExpand = (e:any) => {
         e.preventDefault()
         setExpand(!isExpand)
     }

@@ -3,7 +3,13 @@
 import {redirect} from 'next/navigation'
 import {addNote, updateNote, delNote} from '@/lib/redis';
 
-export async function saveNote(formData) {
+interface FormData {
+    title: string,
+    content?: string,
+    id?: string
+}
+
+export async function saveNote(formData: FormData) {
     const {title, content, id: noteId} = formData
 
     const data = JSON.stringify({
@@ -22,7 +28,7 @@ export async function saveNote(formData) {
 
 }
 
-export async function deleteNote(noteId) {
-    await delNote(noteId)
+export async function deleteNote(noteId?: string) {
+    await delNote(noteId!)
     redirect('/')
 }

@@ -1,7 +1,13 @@
 import dayjs from "dayjs";
 import Link from "next/link";
+import {Note} from "@/lib/redis";
 
-export default function Preview({noteId, noteDetail}) {
+interface Params {
+    noteId?: string,
+    noteDetail: Note
+}
+
+export default function Preview({noteId, noteDetail}: Params) {
     const {title, content, updateTime} = noteDetail
     const color = 'red'
 

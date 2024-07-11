@@ -4,13 +4,17 @@ import {Note} from "@/lib/redis";
 import Preview from "@/app/note/components/Preview";
 import {deleteNote, saveNote} from "@/app/actions";
 
+interface Params {
+    noteId?: string
+    noteDetail?: Note
+}
 
-export default function Edit({noteId = '', noteDetail = null}) {
+export default function Edit({noteId = '', noteDetail}: Params) {
 
     const [formData, setFormData] = useState({
         title: noteDetail ? noteDetail.title : '笔记',
         content: noteDetail ? noteDetail.content : '',
-        id:noteId
+        id: noteId
     })
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>, key: string) => {
@@ -46,7 +50,7 @@ export default function Edit({noteId = '', noteDetail = null}) {
                         className={'px-4 py-2 border-2 border-error-disabled text-error-disabled font-bold rounded-2xl'}>DELETE
                     </button>
                 </div>
-                <Preview noteDetail={formData}/>
+                <Preview noteId={''} noteDetail={formData}/>
             </div>
         </div>
     )
