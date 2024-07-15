@@ -10,6 +10,8 @@ interface Params {
 }
 
 export default function Edit({ noteId = '', noteDetail }: Params) {
+    const [isLoading, setIsLoading] = useState(false);
+
     const [formData, setFormData] = useState({
         title: noteDetail ? noteDetail.title : '笔记',
         content: noteDetail ? noteDetail.content : '',

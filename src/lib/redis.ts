@@ -20,8 +20,6 @@ const initialData: NoteData = {
         '{"title":"ea molestias","content":"et iusto sed quo iure","updateTime":"2023-12-13T09:19:48.837Z"}',
 };
 
-export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
 export async function getAllNotes(): Promise<NoteData> {
     try {
         // await sleep(3000); // 模拟延迟

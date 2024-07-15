@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { addNote, updateNote, delNote } from '@/lib/redis';
+import { revalidatePath } from 'next/cache';
 
 interface FormData {
     title: string;
@@ -25,6 +26,7 @@ export async function saveNote(formData: FormData) {
         const res = await addNote(data);
         redirect(`/note/${res}`);
     }
+    revalidatePath('/', 'layout');
 }
 
 export async function deleteNote(noteId?: string) {
