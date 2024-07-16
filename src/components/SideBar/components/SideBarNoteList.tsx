@@ -1,7 +1,5 @@
 import { getAllNotes } from '@/lib/redis';
-import dayjs from 'dayjs';
-import SideBarContent from '@/components/SideBar/components/SideBarContent';
-import Link from 'next/link';
+import SideBarNoteListRender from '@/components/SideBar/components/SideBarNoteListRender';
 
 export default async function SideBarNoteList() {
     const notes = await getAllNotes();
@@ -9,23 +7,5 @@ export default async function SideBarNoteList() {
 
     if (notesArr.length === 0) return <div className={'text-center'}>暂无笔记</div>;
 
-    return (
-        <div>
-            {notesArr.map(([noteId, note]) => {
-                const { title, content, updateTime } = JSON.parse(note);
-                return (
-                    <Link href={`/note/${noteId}`} key={noteId}>
-                        <div className={'my-2 cursor-pointer rounded-md bg-gray-200 p-4 text-left'}>
-                            <div className={'relative'}>
-                                <div className={'text-xl font-bold'}>{title}</div>
-                                <div>{dayjs(updateTime).format('YYYY-MM-DD hh:mm:ss')}</div>
-
-                                <SideBarContent content={<div>{content}</div>} />
-                            </div>
-                        </div>
-                    </Link>
-                );
-            })}
-        </div>
-    );
+    return <SideBarNoteListRender notesArr={notesArr} />;
 }

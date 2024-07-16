@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import SideBarNoteList from '@/components/SideBar/components/SideBarNoteList';
 import SideBarLoading from '@/components/SideBar/components/SideBarLoading';
 import Link from 'next/link';
+import { SideBarSearch } from '@/components/SideBar/components/SideBarSearch';
 
 export default function SideBar() {
     return (
@@ -11,7 +12,10 @@ export default function SideBar() {
                 <h1 className="cursor-pointer py-8 text-center text-4xl font-bold">hela notes</h1>
             </Link>
 
-            <Button />
+            <div className={'flex h-10'}>
+                <SideBarSearch />
+                <Button />
+            </div>
 
             <Suspense fallback={<SideBarLoading />}>
                 {/*noteItem列表*/}
