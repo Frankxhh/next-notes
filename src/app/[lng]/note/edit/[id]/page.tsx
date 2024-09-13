@@ -1,4 +1,4 @@
-import Edit from '@/app/note/components/Edit';
+import Edit from '@/app/[lng]/note/components/Edit';
 import { getNote } from '@/lib/redis';
 
 interface Params {

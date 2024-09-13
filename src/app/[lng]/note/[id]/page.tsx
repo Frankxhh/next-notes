@@ -1,5 +1,5 @@
 import { getNote } from '@/lib/redis';
-import Preview from '@/app/note/components/Preview';
+import Preview from '@/app/[lng]/note/components/Preview';
 
 interface Params {
     id?: string;

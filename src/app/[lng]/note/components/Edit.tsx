@@ -1,8 +1,8 @@
 'use client';
 import { ChangeEvent, useState } from 'react';
 import { Note } from '@/lib/redis';
-import Preview from '@/app/note/components/Preview';
-import { deleteNote, saveNote } from '@/app/actions';
+import Preview from '@/app/[lng]/note/components/Preview';
+import { deleteNote, saveNote } from '@/app/[lng]/actions';
 
 interface Params {
     noteId?: string;
