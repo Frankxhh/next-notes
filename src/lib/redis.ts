@@ -19,6 +19,23 @@ const initialData: NoteData = {
     '1702459188837':
         '{"title":"ea molestias","content":"et iusto sed quo iure","updateTime":"2023-12-13T09:19:48.837Z"}',
 };
+export async function addUser(username, password) {
+    await redis.hset('users', [username], password);
+    return {
+        name: username,
+        username,
+    };
+}
+
+export async function getUser(username, password) {
+    const passwordFromDB = await redis.hget('users', username);
+    if (!passwordFromDB) return 0;
+    if (passwordFromDB !== password) return 1;
+    return {
+        name: username,
+        username,
+    };
+}
 
 export async function getAllNotes(): Promise<NoteData> {
     try {
