@@ -3,6 +3,7 @@ import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { locales, defaultLocale } from '@/config';
 import { NextResponse } from 'next/server';
+import { auth } from 'auth';
 
 const publicFile = /\.(.*)$/;
 
@@ -14,9 +15,15 @@ function getLocale(request) {
     return match(languages, locales, defaultLocale);
 }
 
-export function middleware(request) {
+export async function middleware(request) {
     const { pathname } = request.nextUrl;
+    console.log(request.nextUrl, 'nexturl');
     // 判断请求路径中是否已存在语言，已存在语言则跳过
+    const session = await auth();
+    console.log(pathname, 'pathname');
+    if (pathname.startsWith('/note/edit') && !session?.user) {
+        return NextResponse.redirect(new URL(pathname.replace('/edit', ''), request.url));
+    }
     const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 
     if (pathnameHasLocale) return;

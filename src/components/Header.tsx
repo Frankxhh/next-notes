@@ -1,4 +1,5 @@
 import { signIn, signOut, auth } from 'auth';
+import Link from 'next/link';
 
 function SignIn({ provider, ...props }) {
     return (
@@ -30,17 +31,19 @@ function SignOut(props) {
 
 export default async function Header() {
     const session = await auth();
-    console.log(session, 'session');
     return (
-        <header style={{ display: 'flex', justifyContent: 'space-around' }}>
-            {session?.user ? (
-                <span style={{ display: 'flex', alignItems: 'center' }}>
-                    {session?.user.name}
-                    <SignOut />
-                </span>
-            ) : (
-                <SignIn />
-            )}
-        </header>
+        <>
+            <Link href={'/client'}>client</Link>
+            <header style={{ display: 'flex', justifyContent: 'space-around' }}>
+                {session?.user ? (
+                    <span style={{ display: 'flex', alignItems: 'center' }}>
+                        {session?.user.name}
+                        <SignOut />
+                    </span>
+                ) : (
+                    <SignIn />
+                )}
+            </header>
+        </>
     );
 }
