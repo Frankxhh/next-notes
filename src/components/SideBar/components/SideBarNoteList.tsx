@@ -1,4 +1,4 @@
-import { getAllNotes } from '@/lib/redis';
+import { getAllNotes } from '@/lib/prisma';
 import SideBarNoteListRender from '@/components/SideBar/components/SideBarNoteListRender';
 
 export default async function SideBarNoteList() {

@@ -1,8 +1,9 @@
-import { auth } from 'auth';
-import { NextResponse } from 'next/server';
-import { defaultLocale, locales } from '@/config';
-import Negotiator from 'negotiator';
+// middleware.js
 import { match } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
+import { locales, defaultLocale } from '@/config';
+import { NextResponse } from 'next/server';
+import { auth } from 'auth';
 
 const publicFile = /\.(.*)$/;
 
@@ -14,12 +15,13 @@ function getLocale(request) {
     return match(languages, locales, defaultLocale);
 }
 
-export default auth((request) => {
+export async function middlewareClone(request) {
     const { pathname } = request.nextUrl;
-    if (pathname.startsWith('/note/edit') && !request.auth) {
-        return NextResponse.redirect(new URL('/api/auth/signin', request.url));
-    }
     // 判断请求路径中是否已存在语言，已存在语言则跳过
+    const session = await auth();
+    if (pathname.startsWith('/note/edit') && !session?.user) {
+        return NextResponse.redirect(new URL(pathname.replace('/edit', ''), request.url));
+    }
     const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 
     if (pathnameHasLocale) return;
@@ -36,7 +38,7 @@ export default auth((request) => {
     }
     // 重定向，如 /products 重定向到 /en-US/products
     return Response.redirect(request.nextUrl);
-});
+}
 
 export const config = {
     matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],

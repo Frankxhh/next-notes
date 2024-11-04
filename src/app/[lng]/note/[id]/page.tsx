@@ -1,4 +1,4 @@
-import { getNote } from '@/lib/redis';
+import { getNote } from '@/lib/prisma';
 import Preview from '@/app/[lng]/note/components/Preview';
 
 interface Params {
